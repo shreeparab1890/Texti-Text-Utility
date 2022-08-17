@@ -122,7 +122,7 @@ export default function Form() {
     let newText = text
       .split(" ")
       .filter(function (item, i, allItems) {
-        return i == allItems.indexOf(item);
+        return i === allItems.indexOf(item);
       })
       .join(" ");
     setText(newText);
@@ -273,6 +273,11 @@ export default function Form() {
     setStop(stopwords.join(" "));
   };
 
+  const handleExtraSpaces = (e) => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   const handleOnChange = (e) => {
     setText(e.target.value);
   };
@@ -411,6 +416,13 @@ export default function Form() {
           onClick={handleDuplicateWords}
         >
           Remove Duplicate Words
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary my-2 mx-2"
+          onClick={handleExtraSpaces}
+        >
+          Remove Extra Space
         </button>
         <button
           type="button"
