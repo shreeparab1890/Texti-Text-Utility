@@ -5,7 +5,7 @@ const initialState = {
   text: "Enter Text Here",
 };
 
-export default function Form() {
+export default function Form(props) {
   const [text, setText] = useState(initialState.text);
   const [stop, setStop] = useState("");
 
@@ -155,6 +155,7 @@ export default function Form() {
       "it",
       "its",
       "itself",
+      "the",
       "they",
       "them",
       "their",
@@ -261,7 +262,7 @@ export default function Form() {
     ];
 
     let res = [];
-    let words = text.split(" ");
+    let words = text.toLowerCase().split(" ");
     for (let i = 0; i < words.length; i++) {
       let word_clean = words[i].split(".").join("");
       if (!stopwords.includes(word_clean)) {
@@ -286,7 +287,9 @@ export default function Form() {
       <div>
         <div className="row">
           <div className="col-6">
-            <h1>Enter The Text to Analyze</h1>
+            <h1 className={`text-${props.mode === "light" ? "dark" : "light"}`}>
+              Enter The Text to Analyze
+            </h1>
           </div>
 
           <div className="col-6" style={{ textAlign: "right" }}>
@@ -317,129 +320,169 @@ export default function Form() {
             id="textForm"
             rows="8"
             onChange={handleOnChange}
+            style={{
+              backgroundColor: props.mode === "dark" ? "grey" : "white",
+              color: props.mode === "dark" ? "white" : "black",
+            }}
           ></textarea>
         </div>
         <div className="container">
-          <h3>
+          <h3 className={`text-${props.mode === "light" ? "dark" : "light"}`}>
             {stop ? "Stopwords: " + stop.split(" ").length + " words" : ""}
           </h3>
-          <p>{stop}</p>
+          <p className={`text-${props.mode === "light" ? "dark" : "light"}`}>
+            {stop}
+          </p>
         </div>
 
         <button
           type="button"
-          className="btn btn-primary"
+          className={`btn btn-${props.mode === "dark" ? "dark" : "primary"}`}
           onClick={handleUpClick}
         >
           to UPPERCASE
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleLoClick}
         >
           to lowercase
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleCamelCase}
         >
           to camelCase
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleCapCase}
         >
           to Capitalize Case
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleAltCase}
         >
           to aLtErNaTe CaSe
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleSenCase}
         >
           to Sentence case
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleTitleCase}
         >
           to Title Case
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleSplit}
         >
           Split Text
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleJoin}
         >
           Join Text
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleReverse}
         >
           Reverse Text
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleRemoveEmpty}
         >
           Remove Empty LInes
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleDuplicateLines}
         >
           Remove Duplicate Lines
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleDuplicateWords}
         >
           Remove Duplicate Words
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleExtraSpaces}
         >
           Remove Extra Space
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleStopWord}
         >
           Remove Stop Words
         </button>
         <button
           type="button"
-          className="btn btn-primary my-2 mx-2"
+          className={`btn btn-${
+            props.mode === "dark" ? "dark" : "primary"
+          } my-2 mx-2`}
           onClick={handleGenrateText}
         >
           Generate Text
         </button>
       </div>
-      <div className="container my-3">
+      <div
+        className={`container my-3 text-${
+          props.mode === "light" ? "dark" : "light"
+        }`}
+      >
         <h2> Text Summary</h2>
         <p>
           {text === "" ? "0" : text.trim().split(" ").length}{" "}
