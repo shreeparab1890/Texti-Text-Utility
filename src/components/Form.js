@@ -12,18 +12,21 @@ export default function Form(props) {
   const handleClear = () => {
     setText("");
     setStop("");
+    props.showAlert("TextBox Cleared", "success");
   };
 
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
     setStop("");
+    props.showAlert("Converted to Uppercase", "success");
   };
 
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
     setStop("");
+    props.showAlert("Converted to lowercase", "success");
   };
 
   const handleCamelCase = () => {
@@ -32,6 +35,7 @@ export default function Form(props) {
       .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
     setText(newText);
     setStop("");
+    props.showAlert("Converted to Camelcase", "success");
   };
 
   const handleCapCase = () => {
@@ -43,6 +47,7 @@ export default function Form(props) {
     const newText = arr.join(" ");
     setText(newText);
     setStop("");
+    props.showAlert("Converted to Capital Case", "success");
   };
 
   const handleAltCase = () => {
@@ -55,12 +60,14 @@ export default function Form(props) {
     const newText = midText.join("");
     setText(newText);
     setStop("");
+    props.showAlert("Converted to Alternate Case", "success");
   };
 
   const handleSenCase = () => {
     let newText = text.charAt(0).toUpperCase() + text.slice(1);
     setText(newText);
     setStop("");
+    props.showAlert("Converted to Sentence Case", "success");
   };
 
   const handleTitleCase = () => {
@@ -69,6 +76,7 @@ export default function Form(props) {
     });
     setText(newText);
     setStop("");
+    props.showAlert("Converted to Title Case", "success");
   };
 
   const handleGenrateText = () => {
@@ -76,12 +84,14 @@ export default function Form(props) {
     let newText = loremIpsum({ p: count });
     setText(newText.toString());
     setStop("");
+    props.showAlert("Dummy Text Generated", "success");
   };
 
   const handleSplit = () => {
     let newText = text.split(" ");
     setText(newText.join("\r\n"));
     setStop("");
+    props.showAlert("Text Splited in Chunks", "success");
   };
 
   const handleJoin = () => {
@@ -93,12 +103,14 @@ export default function Form(props) {
     }
     setText(newText);
     setStop("");
+    props.showAlert("Text Joined ", "success");
   };
 
   const handleReverse = () => {
     let newText = text.split("").reverse().join("");
     setText(newText);
     setStop("");
+    props.showAlert("Text Reversed", "success");
   };
 
   const handleRemoveEmpty = () => {
@@ -106,6 +118,7 @@ export default function Form(props) {
     let newText = text.replace(regex, "");
     setText(newText);
     setStop("");
+    props.showAlert("Empty Lines Removed", "success");
   };
 
   const handleDuplicateLines = () => {
@@ -116,6 +129,7 @@ export default function Form(props) {
       .join("\n");
     setText(newText);
     setStop("");
+    props.showAlert("Duplicate Lines Removed", "success");
   };
 
   const handleDuplicateWords = () => {
@@ -127,6 +141,7 @@ export default function Form(props) {
       .join(" ");
     setText(newText);
     setStop("");
+    props.showAlert("Duplicate Words Removed", "success");
   };
 
   const handleStopWord = () => {
@@ -272,11 +287,13 @@ export default function Form(props) {
     let newText = res.join(" ");
     setText(newText);
     setStop(stopwords.join(" "));
+    props.showAlert("Stopwords Removed", "success");
   };
 
   const handleExtraSpaces = (e) => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces Removed", "success");
   };
 
   const handleOnChange = (e) => {
@@ -298,6 +315,7 @@ export default function Form(props) {
               className="btn btn-light my-2 mx-2"
               onClick={() => {
                 navigator.clipboard.writeText(text);
+                props.showAlert("Textbox Copied", "success");
               }}
             >
               Copy to Clipboard
@@ -362,15 +380,7 @@ export default function Form(props) {
         >
           to camelCase
         </button>
-        <button
-          type="button"
-          className={`btn btn-${
-            props.mode === "dark" ? "dark" : "primary"
-          } my-2 mx-2`}
-          onClick={handleCapCase}
-        >
-          to Capitalize Case
-        </button>
+
         <button
           type="button"
           className={`btn btn-${
