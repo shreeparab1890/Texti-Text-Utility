@@ -38,18 +38,6 @@ export default function Form(props) {
     props.showAlert("Converted to Camelcase", "success");
   };
 
-  const handleCapCase = () => {
-    const arr = text.split(" ");
-    for (var i = 0; i < arr.length; i++) {
-      arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
-    }
-
-    const newText = arr.join(" ");
-    setText(newText);
-    setStop("");
-    props.showAlert("Converted to Capital Case", "success");
-  };
-
   const handleAltCase = () => {
     var midText = text.toLowerCase().split("");
     console.log(midText);
