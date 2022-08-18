@@ -304,7 +304,9 @@ export default function Form(props) {
             </button>
             <button
               type="button"
-              className="btn btn-danger my-2 mx-2"
+              className={`btn btn-${
+                props.mode === "dark" ? "dark" : "danger"
+              } my-2 mx-2`}
               onClick={handleClear}
             >
               Clear
@@ -495,7 +497,11 @@ export default function Form(props) {
           {text === "" ? "0" : 0.008 * text.split(" ").length} Minutes Of Read
         </p>
         <h2>Preview:</h2>
-        <p>{text}</p>
+        <p>
+          {text.length > 0
+            ? text
+            : "Enter Something in the above textbox to preview"}
+        </p>
       </div>
     </>
   );
