@@ -134,7 +134,7 @@ export default function Form(props) {
 
   const handleDuplicateWords = () => {
     let newText = text
-      .split(" ")
+      .split(/\s+/)
       .filter(function (item, i, allItems) {
         return i === allItems.indexOf(item);
       })
@@ -305,7 +305,7 @@ export default function Form(props) {
         <div className="row">
           <div className="col-6">
             <h1 className={`text-${props.mode === "light" ? "dark" : "light"}`}>
-              Enter The Text to Analyze
+              Try Texti : Enter The Text
             </h1>
           </div>
 
@@ -317,6 +317,7 @@ export default function Form(props) {
                 navigator.clipboard.writeText(text);
                 props.showAlert("Textbox Copied", "success");
               }}
+              disabled={text.length === 0}
             >
               Copy to Clipboard
             </button>
@@ -326,6 +327,7 @@ export default function Form(props) {
                 props.mode === "dark" ? "dark" : "danger"
               } my-2 mx-2`}
               onClick={handleClear}
+              disabled={text.length === 0}
             >
               Clear
             </button>
@@ -359,6 +361,7 @@ export default function Form(props) {
           type="button"
           className={`btn btn-${props.mode === "dark" ? "dark" : "primary"}`}
           onClick={handleUpClick}
+          disabled={text.length === 0}
         >
           to UPPERCASE
         </button>
@@ -368,6 +371,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleLoClick}
+          disabled={text.length === 0}
         >
           to lowercase
         </button>
@@ -377,6 +381,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleCamelCase}
+          disabled={text.length === 0}
         >
           to camelCase
         </button>
@@ -387,6 +392,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleAltCase}
+          disabled={text.length === 0}
         >
           to aLtErNaTe CaSe
         </button>
@@ -396,6 +402,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleSenCase}
+          disabled={text.length === 0}
         >
           to Sentence case
         </button>
@@ -405,6 +412,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleTitleCase}
+          disabled={text.length === 0}
         >
           to Title Case
         </button>
@@ -414,6 +422,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleSplit}
+          disabled={text.length === 0}
         >
           Split Text
         </button>
@@ -423,6 +432,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleJoin}
+          disabled={text.length === 0}
         >
           Join Text
         </button>
@@ -432,6 +442,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleReverse}
+          disabled={text.length === 0}
         >
           Reverse Text
         </button>
@@ -441,6 +452,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleRemoveEmpty}
+          disabled={text.length === 0}
         >
           Remove Empty LInes
         </button>
@@ -450,6 +462,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleDuplicateLines}
+          disabled={text.length === 0}
         >
           Remove Duplicate Lines
         </button>
@@ -459,6 +472,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleDuplicateWords}
+          disabled={text.length === 0}
         >
           Remove Duplicate Words
         </button>
@@ -468,6 +482,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleExtraSpaces}
+          disabled={text.length === 0}
         >
           Remove Extra Space
         </button>
@@ -477,6 +492,7 @@ export default function Form(props) {
             props.mode === "dark" ? "dark" : "primary"
           } my-2 mx-2`}
           onClick={handleStopWord}
+          disabled={text.length === 0}
         >
           Remove Stop Words
         </button>
@@ -497,8 +513,8 @@ export default function Form(props) {
       >
         <h2> Text Summary</h2>
         <p>
-          {text === "" ? "0" : text.trim().split(" ").length}{" "}
-          {text.trim().split(" ").length === 1 ? "word" : "words"} and{" "}
+          {text === "" ? "0" : text.trim().split(/\s+/).length}{" "}
+          {text.trim().split(/\s+/).length === 1 ? "word" : "words"} and{" "}
           {text.length} Characters and{" "}
           {text === "" ? "0" : text.split(/\r\n|\r|\n/).length} Lines
         </p>
@@ -507,11 +523,7 @@ export default function Form(props) {
           {text === "" ? "0" : 0.008 * text.split(" ").length} Minutes Of Read
         </p>
         <h2>Preview:</h2>
-        <p>
-          {text.length > 0
-            ? text
-            : "Enter Something in the above textbox to preview"}
-        </p>
+        <p>{text.length > 0 ? text : "Nothing to preview"}</p>
       </div>
     </>
   );
