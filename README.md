@@ -1,3 +1,6 @@
+You can check the demo of the same here:
+https://texti.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
