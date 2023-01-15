@@ -1,4 +1,4 @@
-You can check the demo of the same here:
+You can check the demo at:
 https://texti.netlify.app/
 
 # Getting Started with Create React App
