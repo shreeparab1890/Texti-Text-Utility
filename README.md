@@ -1,8 +1,8 @@
 # Introdction
-This is a React-based web application that provides a variety of text manipulation tools for users. The app utilizes functional components and allows users to perform various actions on their text strings, such as converting to uppercase or lowercase, sentence case, alternate case, camel case, removing duplicate lines or words, removing empty lines, splitting or joining strings, removing stopwords, and generating dummy text. The app is designed to be user-friendly and easy to navigate, making it a useful tool for anyone who needs to manipulate text in various ways. Overall, this app can be a powerful tool for writers, editors, and developers who need to manipulate text quickly and efficiently.
+This is a React-based web application hosted on netlify that provides a variety of text manipulation tools for users. The app utilizes functional components and allows users to perform various actions on their text strings, such as converting to uppercase or lowercase, sentence case, alternate case, camel case, removing duplicate lines or words, removing empty lines, splitting or joining strings, removing stopwords, and generating dummy text. The app is designed to be user-friendly and easy to navigate, making it a useful tool for anyone who needs to manipulate text in various ways. Overall, this app can be a powerful tool for writers, editors, and developers who need to manipulate text quickly and efficiently.
 
 ## Packeges Used:
- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
 ## You can check the demo at: https://texti.netlify.app/
 
